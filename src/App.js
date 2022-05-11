@@ -11,7 +11,7 @@ import Navbar from './Pages/Shared/Navbar';
 
 function App() {
   return (
-    <div className='max-w-1xl mx-auto ' >
+    <div className='max-w-1xl mx-auto px-10 ' >
       <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home/>}/>
