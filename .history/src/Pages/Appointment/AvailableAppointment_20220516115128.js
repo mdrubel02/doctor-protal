@@ -11,7 +11,7 @@ const AvailableAppointment = ({date}) => {
     
     const formattedDate = format(date, 'PP');
 
-    const {data:services,isLoading,refetch}=useQuery(['available',formattedDate], ()=> fetch(`http://localhost:5000/available?date=${formattedDate}`).then(res => res.json()))
+    const {data:services,isLoading}=useQuery('available', ()=> fetch(`http://localhost:5000/available?date=${formattedDate}`)).then(res => res.json())
     if(isLoading){
         return <Loading></Loading>
     }
@@ -33,7 +33,7 @@ const AvailableAppointment = ({date}) => {
                     ></Service>)
                 }
             </div>
-            {treatment && <BookingModal treatment={treatment} setTreatment={setTreatment} date={date} refetch={refetch}></BookingModal>}
+            {treatment && <BookingModal treatment={treatment} setTreatment={setTreatment} date={date}></BookingModal>}
         </div>
 
     );
