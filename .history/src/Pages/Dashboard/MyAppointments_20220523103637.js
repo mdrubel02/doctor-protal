@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase.init';
 
 const MyAppointments = () => {
-    const [appointments, setAppointments] = useState([]);
-    const [user] = useAuthState(auth);
-    console.log(user)
-    const navigate = useNavigate()
+    const [appointments, setAppointment] = useState([]);
+    const [user] = useAuthState(auth)
+    const navigate = useNavigate();
+    console.log(appointments);
 
     useEffect(() => {
         if (user) {
@@ -19,25 +19,23 @@ const MyAppointments = () => {
                 }
             })
                 .then(res => {
-                    console.log('res', res);
+                    console.log('res', res)
                     if (res.status === 401 || res.status === 403) {
                         signOut(auth);
                         localStorage.removeItem('accessToken');
-                        navigate('/');
+                        navigate('/')
                     }
                     return res.json()
                 })
                 .then(data => {
-
-                    setAppointments(data);
-                });
+                    setAppointment(data)
+                })
         }
     }, [user])
-
     return (
 
         <div className='grid grid-cols-1'>
-            
+            <h2>this my appointments page:{appointments.length}</h2>
             <div class="overflow-x-auto">
                 <table class="table w-full">
 

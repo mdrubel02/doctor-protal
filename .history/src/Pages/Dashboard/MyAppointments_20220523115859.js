@@ -37,7 +37,7 @@ const MyAppointments = () => {
     return (
 
         <div className='grid grid-cols-1'>
-            
+            <h2>this my appointments page:{appointments.length}</h2>
             <div class="overflow-x-auto">
                 <table class="table w-full">
 
